@@ -1,205 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hazik Mushtaq-Portfolio</title>
-  <link rel="stylesheet" href="Style.css">
-  <!-- <link href='https://unpkag.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazik Mushtaq-Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
 
 </head>
-
-<body id="Ist-page">
-  <div class="navslider"></div>
-
-  <button class="NavCntrl" id="open-slide-bar" onclick="opensidebar()"><i class="fa-solid fa-bars"></i></button>
-  <header> <!--Header Section-->
-    <nav id="navbar">
-      <button class="NavCntrl" id="close-slide-bar" onclick="closesidebar()"><i class="fa-solid fa-xmark"></i></button>
-
-      <a class="navBtn" id="FirstBtn" href="">
-        &lt;HAZIK MUSHTAQ&gt;
-      </a>
-
-      <a class="navBtn NB" href="#Ist-page">
-        Home
-      </a>
-
-      <a class="navBtn NB" href="#scrollTarget">
-        Skill
-      </a>
-
-      <a class="navBtn NB" href="#3rd-page">
-        Projects
-      </a>
-
-      <a class="navBtn NB" href="HAZIK_MUSHTAQ_CV.pdf">
-        Download Resume
-      </a>
-
-      <a class="navBtn NB" href="">
-        Theme
-      </a>
-    </nav>
-    <div class="scroll-indicator"></div>
-  </header>
-  <div class="mbody">
-    <div class="textpart">
-      <section class="home">
-        <div class="home-content">
-          <h1 class="fade-in">Hi, It's <br><span>HAZIK MUSHTAQ</span></h1>
-          <h3 class="text-animation fade-in">Aspiring <span></span></h3>
-          <p class="fade-in">I am a passionate BCA student on a journey to become a skilled developer. With a strong
-            foundation in HTML, CSS, JavaScript, and C++, I am continuously learning and growing, currently diving
-            deeper into CPP and web development. I believe in crafting each project with dedication, creativity, and a
-            desire to make a meaningful impact. Always eager to take on new challenges and opportunities to improve!
-          </p>
-          <div class="btn-group fade-in">
-            <a href="#" class="btn">Hire</a>
-            <a href="#" class="btn" id="btn-contact">Contact</a>
-          </div>
+<link rel="stylesheet" href="Style.css">
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">HazikMushtaq</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
-      </section>
-    </div>
-    <!-- profile and social section-->
-    <div class="profile">
-      <!-- <div class="Icon-Container">
-          <div class="Icons"><i class="fa-brands fa-linkedin-in"></i></div>
-          <div class="Icons"><i class="fa-brands fa-x-twitter"></i></div>
-          <div class="Icons"><i class="fa-brands fa-youtube"></i></div>
-          <div class="Icons"><i class="fa-brands fa-github"></i></div>
-        </div> -->
-      <div class="card">
+    </header>
 
-        <img class="logo-svg" src="image.jpg" alt="">
-
-        <div class="box box1"><span class="icon"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"
-              class="svg">
-              <path
-                d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z">
-              </path>
-            </svg></span></div>
-
-        <div class="box box2"> <span class="icon"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
-              class="svg">
-              <path
-                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
-              </path>
-            </svg></span></div>
-
-        <div class="box box3"><span class="icon"><svg viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"
-              class="svg">
-              <path
-                d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z">
-              </path>
-            </svg></span></div>
-
-        <div class="box box4">
-          <span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg">
-              <path
-                d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
-            </svg>
-          </span>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Hazik Mushtaq</span></h1>
+                <p>A passionate BCA student and aspiring web developer currently mastering the art of creating responsive, user-friendly web experiences. I blend academic knowledge with hands-on projects to build solutions that matter.</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="image-5.jpg" alt="Hazik-Mushtaq" class="profile-img">
+            </div>
         </div>
-        <!-- <div class="box box4"><i class="fa-brands fa-linkedin-in"></i></div> -->
-      </div>
-      <fieldset class="quotesection">
-        <legend>
-          <!-- &lt;/HazikMushtaq&gt; -->
-          <div class="terminal-controls">
-            <div class="control close"></div>
-            <div class="control minimize"></div>
-            <div class="control maximize"></div>
-          </div>
-        </legend>
-        This site isn't generated.<br>It's crafted, <br>line by line, <br>with love...
-      </fieldset>
-    </div>
-  </div>
+    </section>
 
-
-  <!-- ===================================- Skill Page =================================== -->
-  <div class="page-body skill" id="scrollTarget">
-
-    <div id="skillHead">
-      My<span>Skills</span>
-    </div>
-
-    <div class="container1">
-
-      <h1 class="paragraphName">Technical Skills</h1>
-      <div class="Technical-bar">
-        <div class="bar"><i class="fa-brands fa-html5"></i>
-          <div class="info">
-            <span class="span">HTML</span>
-          </div>
-          <div class="progress-line">
-            <span class="Html span"></span>
-          </div>
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>BCA Student & Web Developer</h3>
+                    <p class="text">I'm currently pursuing my Bachelor of Computer Applications (BCA) with a strong focus on web technologies. My academic journey has given me a solid foundation in programming, databases, and software engineering principles.</p>
+                    <p class="text">Outside the classroom, I'm constantly building projects to apply what I've learned and explore new technologies. I believe in learning by doing, and my portfolio reflects my growth as a developer.</p>
+                    <p class="text">When I'm not coding, you'll find me exploring new design trends and new technologies</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card" id="card-1">
+                            <i class="fas fa-code"></i>
+                            <h4>Projects</h4>
+                            <p>12+</p>
+                        </div>
+                        <div class="stat-card" id="card-2">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>BCA</h4>
+                            <p>3nd Year</p>
+                        </div>
+                        <div class="stat-card" id="card-3">
+                            <i class="fas fa-coffee"></i>
+                            <h4>Cups of Coffee</h4>
+                            <p>1000+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="bar"><i class="fa-brands fa-css3-alt"></i>
-          <div class="info">
-            <span class="span">CSS</span>
-          </div>
-          <div class="progress-line">
-            <span class="Css span"></span>
-          </div>
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fab fa-html5"></i> Frontend</h3>
+                    <ul class="skills-list">
+                        <li>
+                            <span>HTML5</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+                        </li>
+                        <li>
+                            <span>CSS3 / SCSS</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                        </li>
+                        <li>
+                            <span>JavaScript</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </li>
+                        <li>
+                            <span>React</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                        </li>
+                        <li>
+                            <span>Responsive Design</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Backend & Databases</h3>
+                    <ul class="skills-list">
+                        <li>
+                            <span>Node.js</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                        </li>
+                        <li>
+                            <span>Express</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                        </li>
+                        <li>
+                            <span>MongoDB</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                        </li>
+                        <li>
+                            <span>MySQL</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </li>
+                        <li>
+                            <span>REST APIs</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Other</h3>
+                    <ul class="skills-list">
+                        <li>
+                            <span>Git & GitHub</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                        </li>
+                        <li>
+                            <span>VS Code</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+                        </li>
+                        <li>
+                            <span>Figma</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                        </li>
+                        <li>
+                            <span>Postman</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </li>
+                        <li>
+                            <span>CLI</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="bar"><i class="fa-brands fa-react"></i>
-          <div class="info">
-            <span class="span">JavaScript</span>
-          </div>
-          <div class="progress-line Js">
-            <span class="JavaScript span"></span>
-          </div>
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Dashboard</h3>
+                        <p>A responsive admin dashboard for e-commerce platforms with real-time analytics and inventory management.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Blog Platform</h3>
+                        <p>A full-stack blogging platform with user authentication, rich text editor, and comment system.</p>
+                        <div class="project-tags">
+                            <span class="tag">Express</span>
+                            <span class="tag">EJS</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Task Management App</h3>
+                        <p>A collaborative task management application with drag-and-drop interface and real-time sync.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Material UI</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="bar"><i class="fa-brands fa-js"></i>
-          <div class="info">
-            <span class="span">React</span>
-          </div>
-          <div class="progress-line React">
-            <span class="React span"></span>
-          </div>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Talk About Your Project</h3>
+                    <p>I'm currently available for freelance work and internships. If you have a project you want to collaborate on or need help with, feel free to reach out!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>HazikMushtaq@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <p>github.com/Hazik-Mushtaq</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <p>linkedin.com/in/HazikMushtaq</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="SoftSkills-bar"></div>
-  </div>
-  <!-- =================================== Skill Page End-=================================== -->
+    </section>
 
-  <!-------------------------------------- 3rd Page ------------------------------------ -->
-
-  <div class="page-body" id="3rd-page">
-
-    <div id="skillHead">
-      <h4>My</h4>
-      <span>Projects</span>
-    </div>
-
-    <div class="container1">
-
-      <h1 class="paragraphName">Technical Skills</h1>
-    </div>
-  </div>
-
-  </div>
-  </div>
-  <!-- =================================== 3rd Page End-=================================== -->
-
-
-
-  <script src="script.js" defer></script>
-
-
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2025 HazikMushtaq. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="Script.js"></script>
+    
 </body>
-
 </html>
