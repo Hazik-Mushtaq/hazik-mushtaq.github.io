@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('preload');
+
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
   const navAnchors = document.querySelectorAll('.nav-links a');
@@ -86,57 +88,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       {
-        threshold: 0.14,
-        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.12,
+        rootMargin: '0px 0px -60px 0px'
       }
     );
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    const countObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+    const countObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-          const el = entry.target;
-          const target = Number(el.dataset.count) || 0;
-          let current = 0;
-          const step = Math.max(1, Math.ceil(target / 20));
+        const el = entry.target;
+        const target = Number(el.dataset.count) || 0;
+        let current = 0;
+        const step = Math.max(1, Math.ceil(target / 24));
 
-          const timer = setInterval(() => {
-            current += step;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            el.textContent = `${target}+`;
+            clearInterval(timer);
+          } else {
+            el.textContent = current;
+          }
+        }, 45);
 
-            if (current >= target) {
-              el.textContent = `${target}+`;
-              clearInterval(timer);
-            } else {
-              el.textContent = current;
-            }
-          }, 50);
-
-          observer.unobserve(el);
-        });
-      },
-      { threshold: 0.6 }
-    );
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.45 });
 
     countElements.forEach((el) => countObserver.observe(el));
 
-    const meterObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.width = entry.target.dataset.width || '0%';
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
+    const meterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.dataset.width || '0%';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
 
     meterBars.forEach((bar) => meterObserver.observe(bar));
   } else {
-    // Fallback so content never stays hidden
     revealElements.forEach((el) => el.classList.add('show'));
     countElements.forEach((el) => {
       const target = Number(el.dataset.count) || 0;
@@ -150,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
       const button = form.querySelector('button');
       if (!button) return;
 
@@ -165,4 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1800);
     });
   }
+
+  requestAnimationFrame(() => {
+    document.body.classList.remove('preload');
+    document.body.classList.add('loaded');
+  });
 });

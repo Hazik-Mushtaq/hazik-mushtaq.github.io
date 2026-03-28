@@ -958,17 +958,18 @@
       border-top: 1px solid var(--line);
     }
 
-    .reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: 0.7s ease;
+  .reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+  will-change: opacity, transform;
 }
 
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+    
     @media (max-width: 1080px) {
       .hero-grid,
       .profile-section,
@@ -1104,3 +1105,51 @@
         width: min(100%, 360px);
       }
     }
+
+
+    body.preload .hero-content,
+body.preload .hero-visual,
+body.preload .hero-stats .stat,
+body.preload .hero-actions .btn {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-content,
+.hero-visual,
+.hero-stats .stat,
+.hero-actions .btn {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+body.loaded .hero-content,
+body.loaded .hero-visual,
+body.loaded .hero-stats .stat,
+body.loaded .hero-actions .btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.loaded .hero-visual {
+  transition-delay: 0.12s;
+}
+
+body.loaded .hero-actions .btn:nth-child(1) {
+  transition-delay: 0.18s;
+}
+
+body.loaded .hero-actions .btn:nth-child(2) {
+  transition-delay: 0.26s;
+}
+
+body.loaded .hero-stats .stat:nth-child(1) {
+  transition-delay: 0.16s;
+}
+
+body.loaded .hero-stats .stat:nth-child(2) {
+  transition-delay: 0.24s;
+}
+
+body.loaded .hero-stats .stat:nth-child(3) {
+  transition-delay: 0.32s;
+}
