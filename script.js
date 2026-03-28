@@ -1,131 +1,168 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const themeToggle = document.getElementById('themeToggle');
+  const themeToggleText = document.querySelector('.theme-toggle-text');
+  const profileImg = document.getElementById('profileImg');
+  const sections = document.querySelectorAll('section[id]');
+  const countElements = document.querySelectorAll('[data-count]');
+  const meterBars = document.querySelectorAll('.meter span');
+  const form = document.getElementById('contactForm');
+  const revealElements = document.querySelectorAll('.reveal');
 
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-    const themeToggle = document.getElementById('themeToggle');
-    const themeToggleText = document.querySelector('.theme-toggle-text');
-    const profileImg = document.getElementById('profileImg');
-    const sections = document.querySelectorAll('section[id]');
-    const countElements = document.querySelectorAll('[data-count]');
-    const meterBars = document.querySelectorAll('.meter span');
-    const form = document.getElementById('contactForm');
+  function applyTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('portfolio-theme', theme);
 
-    function applyTheme(theme) {
-      document.body.setAttribute('data-theme', theme);
-      localStorage.setItem('portfolio-theme', theme);
-
-      if (profileImg) {
-        profileImg.src = theme === 'light'
-          ? 'P3.jpeg'
-          : 'P4.jpeg';
-      }
-
-      if (themeToggleText) {
-        themeToggleText.textContent = theme === 'light' ? 'Light Mode' : 'Dark Mode';
-      }
+    if (profileImg) {
+      profileImg.src = theme === 'light' ? 'P3.jpeg' : 'P4.jpeg';
     }
 
-    applyTheme(localStorage.getItem('portfolio-theme') || 'dark');
-
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const currentTheme = document.body.getAttribute('data-theme');
-        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-      });
+    if (themeToggleText) {
+      themeToggleText.textContent = theme === 'light' ? 'Light Mode' : 'Dark Mode';
     }
+  }
 
-    if (menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-      });
-    }
+  applyTheme(localStorage.getItem('portfolio-theme') || 'dark');
 
-    navAnchors.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('show');
-        navAnchors.forEach(item => item.classList.remove('active'));
-        link.classList.add('active');
-      });
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
+  }
 
-    window.addEventListener('scroll', () => {
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  navAnchors.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (navLinks) navLinks.classList.remove('show');
+
+      navAnchors.forEach((item) => item.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  window.addEventListener(
+    'scroll',
+    () => {
       let current = '';
 
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const sectionTop = section.offsetTop - 140;
         const sectionHeight = section.offsetHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+
+        if (
+          window.scrollY >= sectionTop &&
+          window.scrollY < sectionTop + sectionHeight
+        ) {
           current = section.getAttribute('id');
         }
       });
 
-      navAnchors.forEach(link => {
+      navAnchors.forEach((link) => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
+        if (link.getAttribute('href') === `#${current}`) {
           link.classList.add('active');
         }
       });
-    }, { passive: true });
+    },
+    { passive: true }
+  );
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.14 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        const el = entry.target;
-        const target = Number(el.dataset.count);
-        let current = 0;
-        const step = Math.max(1, Math.ceil(target / 20));
-
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            el.textContent = target + '+';
-            clearInterval(timer);
-          } else {
-            el.textContent = current;
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
           }
-        }, 50);
+        });
+      },
+      {
+        threshold: 0.14,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
 
-        countObserver.unobserve(el);
-      });
-    }, { threshold: 0.6 });
+    revealElements.forEach((el) => revealObserver.observe(el));
 
-    countElements.forEach(el => countObserver.observe(el));
+    const countObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
 
-    const meterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.width = entry.target.dataset.width;
-          meterObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.4 });
+          const el = entry.target;
+          const target = Number(el.dataset.count) || 0;
+          let current = 0;
+          const step = Math.max(1, Math.ceil(target / 20));
 
-    meterBars.forEach(bar => meterObserver.observe(bar));
+          const timer = setInterval(() => {
+            current += step;
 
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const button = form.querySelector('button');
-        const originalText = button.textContent;
-        button.textContent = 'Message Sent ✓';
-        button.disabled = true;
+            if (current >= target) {
+              el.textContent = `${target}+`;
+              clearInterval(timer);
+            } else {
+              el.textContent = current;
+            }
+          }, 50);
 
-        setTimeout(() => {
-          button.textContent = originalText;
-          button.disabled = false;
-          form.reset();
-        }, 1800);
-      });
-    }
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    countElements.forEach((el) => countObserver.observe(el));
+
+    const meterObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.width = entry.target.dataset.width || '0%';
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    meterBars.forEach((bar) => meterObserver.observe(bar));
+  } else {
+    // Fallback so content never stays hidden
+    revealElements.forEach((el) => el.classList.add('show'));
+    countElements.forEach((el) => {
+      const target = Number(el.dataset.count) || 0;
+      el.textContent = `${target}+`;
+    });
+    meterBars.forEach((bar) => {
+      bar.style.width = bar.dataset.width || '0%';
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const button = form.querySelector('button');
+      if (!button) return;
+
+      const originalText = button.textContent;
+      button.textContent = 'Message Sent ✓';
+      button.disabled = true;
+
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+        form.reset();
+      }, 1800);
+    });
+  }
+});
