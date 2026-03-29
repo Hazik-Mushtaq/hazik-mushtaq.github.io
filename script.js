@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('portfolio-theme', theme);
 
     if (profileImg) {
-      profileImg.src = theme === 'light' ? 'P3.jpeg' : 'P4.jpeg';
+      profileImg.src = theme === 'light' ? 'P3.jpeg' : 'P6.png';
     }
 
     if (themeToggleText) {

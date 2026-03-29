@@ -1153,3 +1153,5 @@ body.loaded .hero-stats .stat:nth-child(2) {
 body.loaded .hero-stats .stat:nth-child(3) {
   transition-delay: 0.32s;
 }
+
+/* Style */
