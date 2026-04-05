@@ -13,6 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm');
   const revealElements = document.querySelectorAll('.reveal');
 
+  let lastScroll = 0;
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+
+  if (Math.abs(currentScroll - lastScroll) < 5) return;
+
+  if (currentScroll > lastScroll && currentScroll > 80) {
+    navbar.classList.add("hide");
+  } else {
+    navbar.classList.remove("hide");
+  }
+
+  lastScroll = currentScroll;
+});
+
   function applyTheme(theme) {
     document.body.setAttribute('data-theme', theme);
     localStorage.setItem('portfolio-theme', theme);

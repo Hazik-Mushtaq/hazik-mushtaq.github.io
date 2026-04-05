@@ -15,13 +15,10 @@
 
   <!-- Testing -->
 </head>
-<body data-theme="dark">
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-    <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
-    <span class="theme-toggle-text">Dark Mode</span>
-  </button>
+<body >
+  
 
-  <header>
+  <header id="navbar">
     <nav>
       <a href="#home" class="brand">
         <div class="brand-mark">HM</div>
@@ -30,14 +27,21 @@
           <span>BCA Student • Web Developer</span>
         </div>
       </a>
+              <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+    <span class="theme-toggle-text">Dark Mode</span>
+  </button>
+ 
 
       <ul class="nav-links" id="navLinks">
+        
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#profile">Profile</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
+
       </ul>
 
       <button class="mobile-toggle" id="menuBtn" aria-label="Open menu">☰</button>
@@ -51,7 +55,7 @@
           <div class="eyebrow">Available for internships & opportunities</div>
           <h2>Building <span class="gradient-text">future-ready</span><br />digital experiences.</h2>
           <p>
-            I’m <strong>Hazik Mushtaq</strong>, a <strong>BCA student in 6th semester</strong> with strong interest in <strong>web development, software engineering, editing, and graphic design</strong>. I know <strong>HTML, CSS, and basic JavaScript</strong>, and I’m focused on growing into a professional developer who builds clean, modern, and meaningful digital products.
+            I’m <strong>Hazik Mushtaq</strong>, a <strong>BCA student in 6th semester</strong> with strong interest in <strong>web development, software engineering, editing, and graphic design</strong>. I know <strong>HTML, CSS, and JavaScript</strong>, and I’m focused on growing into a professional developer who builds clean, modern, and meaningful digital products.
           </p>
 
           <div class="hero-actions">
@@ -70,7 +74,7 @@
             </div>
             <div class="stat">
               <h3 data-count="24">0</h3>
-              <span>Creative Ideas Loading</span>
+              <span>Creative Ideas</span>
             </div>
           </div>
         </div>
@@ -126,9 +130,7 @@
           <p>
             I am a BCA student in 6th semester who enjoys blending technology and creativity. My interests in web development, software engineering, editing, and graphic design help me build experiences that are functional, clean, and visually strong.
           </p>
-          <p>
-            Replace the image on the left with your own professional portrait and edit this text anytime with your exact story, goals, and strengths.
-          </p>
+         
           <div class="profile-points">
             <div><strong>Focus</strong>Frontend foundations and growth into software engineering</div>
             <div><strong>Creative Edge</strong>Editing and graphic design sense for stronger visual output</div>
@@ -163,7 +165,7 @@
           <div class="timeline">
             <div class="timeline-item">
               <span>Foundation</span>
-              <h4>Started with HTML, CSS and basic JavaScript, Learning React, C, C++, Php, Python. </h4>
+              <h4>Started with HTML, CSS and JavaScript, React, C, C++, Php, Python. </h4>
               <p>Built understanding of webpage structure, styling, responsiveness and simple interaction.</p>
             </div>
             <div class="timeline-item">
@@ -281,8 +283,7 @@
             </div>
           </div>
           <div class="project-content">
-            <!-- <h3>Student Productivity Dashboard</h3>
-            <p>A sleek dashboard idea for tracking skills, study progress, tasks, and goals in a clean futuristic interface.</p> -->
+
             <div class="stack">
               <span>Dashboard</span>
               <span>Planning</span>
@@ -307,7 +308,6 @@
       <div class="contact-grid">
         <div class="card reveal">
           <h3>Contact Information</h3>
-          <!-- <p>This section makes your portfolio feel complete and professional. You can later add LinkedIn, GitHub, Instagram, Behance, or any other platform links here.</p> -->
 
           <div class="contact-stack">
             <div class="contact-card">
@@ -337,7 +337,7 @@
         </div>
 
         <div class="card reveal">
-          <h3>Quick Message UI</h3>
+          
           <form class="contact-form" id="contactForm">
             <div class="input-wrap">
               <input type="text" placeholder="Your name" required />
